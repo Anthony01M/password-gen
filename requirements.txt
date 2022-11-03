@@ -1,5 +1,5 @@
 # pip compile requirements.txt
 
-Flask
-random
-string
+Flask>=1.0.2
+random>=0.0.2
+string>=0.0.2
