@@ -44,7 +44,7 @@ jobs:
           pip install -r requirements.txt
       - name: run server
         run: |
-          py3 server.py
+          py server.py
   
   # Deployment job
   deploy:
