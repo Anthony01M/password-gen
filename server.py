@@ -9,7 +9,8 @@ from flask import Flask, request, render_template
 import random
 import string
 
-app = Flask(__name__, template_folder='templates', WSGIRequestHandler=flask_frozen.Freezer)
+app = Flask(__name__, template_folder='templates')
+app.config['DEBUG'] = False
 
 @app.route('/')
 def index():
@@ -38,7 +39,7 @@ def aws_sw():
     return app.send_static_file('aws-sw.js')
 
 if __name__ == '__main__':
-    # use freeze to generate static files and WSGI server
+    
     freezer = flask_frozen.Freezer(app)
 
 
