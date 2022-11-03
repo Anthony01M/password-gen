@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random Password Generator</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script async src="https://arc.io/widget.min.js#3Qs5Lf6b"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #333;
+            background-color: gold;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin: auto;
+            position: relative;
+            width: 300px;
+            border-radius: 4px solid #ccc;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        input {
+            display: block;
+            width: 300px;
+            float: none;
+            font-size: 14px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .hidden {
+            display: none;
+        }
+        input[type="submit"] {
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            height: 36px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #f5f5f5;
+            border: 1px solid #c5c5c5;
+        }
+
+        #lock-modal {
+            background-color: black;
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+        }
+
+        #loading-circle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 0.6s ease-in infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #loading-text {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        #loading-text span {
+            display: block;
+        }
+
+        #loading-text span:nth-child(1) {
+            animation: blink 0.6s ease-in infinite;
+        }
+
+        #loading-text span:nth-child(2) {
+            animation: blink 0.6s ease-in 0.2s infinite;
+        }
+
+        #loading-text span:nth-child(3) {
+            animation: blink 0.6s ease-in 0.4s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        #textarea {
+            width: 300px;
+            height: 100px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        #password-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #password-container .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #password-container .button:hover {
+            background-color: #f5f5f5;
+            border: 1px solid #c5c5c5;
+        }
+
+        #password-container .button:active {
+            background-color: #f0f0f0;
+            border: 1px solid #b0b0b0;
+        }
+
+        #password-container .button:last-child {
+            margin-right: 0;
+        }
+
+        #password-container .button.disabled {
+            background-color: #e0e0e0;
+            border: 1px solid #c5c5c5;
+            cursor: default;
+        }
+
+
+        </style>
+</head>
+<body>
+    <h1>Random Password Generator</h1>
+    <div id="password-container" class="hidden">
+        <!-- password div will be a textarea -->
+        <textarea id="password" class="password" readonly></textarea>
+        <!-- seperator -->
+        <div>
+            <div class="button" id="generate">Generate</div>
+            <div class="button" id="copy">Copy</div>
+        </div>
+    </div>
+
+    <form action="/password" method="GET">
+        <label for="length">Length </label>
+        <input type="number" name="length" id="length" min="8" value="8" required>
+        <!-- check boxes -->
+        <label for="numbers">Numbers</label>
+        <input type="checkbox" name="numbers" value="numbers">
+        <label for="symbols">Symbols</label>
+        <input type="checkbox" name="symbols" value="symbols">
+        <label for="uppercase">Uppercase </label>
+        <input type="checkbox" name="uppercase" value="uppercase">
+        <label for="lowercase">Lowercase </label>
+        <input type="checkbox" name="lowercase" value="lowercase">
+        <div id="error"></div>
+        <input type="submit" value="generate">
+        <div id="lock-modal" class="hidden">
+            <div id="loading-circle"></div>
+        </div>
+    </form>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    <script>
+        var hcaptcha = document.createElement('div');
+        hcaptcha.className = 'h-captcha';
+        hcaptcha.setAttribute('data-sitekey', '55c75673-8d89-40ab-af6e-e36e14aa4e31');
+        hcaptcha.setAttribute('data-theme', 'dark');
+
+        var submit = document.querySelector('input[type="submit"]');
+        submit.parentNode.insertBefore(hcaptcha, submit);
+
+        // add hcaptcha to the form
+        const form = document.querySelector('form');
+
+        var error = document.querySelector('#error');
+
+        var password = document.querySelector('#password');
+
+        function refreshCaptcha() {
+            hcaptcha.reset();
+        }
+
+        // get the password from the server and print it in the page if the checkboxes are checked send true else send false
+        // make sure that the password is not fully seen by the user but can be copied to the clipboard by the user right away
+        // there's no need to check if the user has checked at least one checkbox because the server will do that
+        // the server will also check if the length is between 8 and 128
+        // make sure that the user can't submit the form again until the server responds
+        function getPassword() {
+            var length = document.querySelector('#length').value;
+            var numbers = document.querySelector('input[name="numbers"]').checked;
+            var symbols = document.querySelector('input[name="symbols"]').checked;
+            var uppercase = document.querySelector('input[name="uppercase"]').checked;
+            var lowercase = document.querySelector('input[name="lowercase"]').checked;
+
+            var lockModal = document.querySelector('#lock-modal');
+            lockModal.classList.remove('hidden');
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/password?length=' + length + '&numbers=' + numbers + '&symbols=' + symbols + '&uppercase=' + uppercase + '&lowercase=' + lowercase);
+            xhr.send();
+            xhr.onload = function() {
+                if (xhr.status != 200) {
+                    error.textContent = 'Something went wrong';
+                    lockModal.classList.add('hidden');
+                    refreshCaptcha();
+                } else {
+                    var response = JSON.parse(xhr.response);
+                    if (response.error) {
+                        error.textContent = response.error;
+                        lockModal.classList.add('hidden');
+                        refreshCaptcha();
+                    } else {
+                        password.textContent = response.password;
+                        lockModal.classList.add('hidden');
+                        document.querySelector('#password-container').classList.remove('hidden');
+                        refreshCaptcha();
+                    }
+                }
+            }
+        }
+
+        // listeners
+        document.querySelector('#generate').addEventListener('click', function() {
+            // hides the password container
+            document.querySelector('#password-container').classList.add('hidden');
+            // shows the form and refreshes the captcha while hiding the lock modal
+            document.querySelector('form').classList.remove('hidden');
+            document.querySelector('#lock-modal').classList.add('hidden');
+            document.querySelector('#password').innerHTML = '';
+            document.querySelector('#error').innerHTML = '';
+            refreshCaptcha();
+        });
+
+        document.querySelector('#copy').addEventListener('click', function() {
+            var password = document.querySelector('#password').textContent;
+            var text = document.querySelector('#password').innerHTML;
+            // make sure that it actually copied
+            var success = 'The password has been copied to clipboard';
+            var fail = 'Failed to copy the password to clipboard';
+            if (navigator.clipboard.writeText(text)) {
+                swal({
+                title: 'Copied!',
+                text: success,
+                icon: 'success',
+                button: 'Close',
+            });
+            } else {
+                swal({
+                title: 'ERROR!',
+                text: fail,
+                icon: 'error',
+                button: 'Close',
+            });
+            }
+        });
+
+        // when the form is submitted
+        // check if the captcha is solved
+        // if it is solved then load the modal for 3 seconds
+        // then hide the form and show the password container
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (hcaptcha.getResponse() == '') {
+                error.innerHTML = 'Please solve the captcha';
+            } else {
+                document.querySelector('#lock-modal').classList.remove('hidden');
+                setTimeout(function() {
+                    document.querySelector('form').classList.add('hidden');
+                    document.querySelector('#lock-modal').classList.add('hidden');
+                    document.querySelector('#password-container').classList.remove('hidden');
+                    getPassword();
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
