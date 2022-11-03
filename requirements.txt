@@ -1,3 +1,4 @@
 # pip compile requirements.txt
 
-Flask>=1.0.2
+Flask>=2.1.*
+Frozen-Flask>=0.18

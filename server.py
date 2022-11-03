@@ -4,6 +4,7 @@
 # First Flask and HTML project, i suck at CSS
 #
 
+import flask_frozen
 from flask import Flask, request, render_template
 import random
 import string
@@ -37,6 +38,8 @@ def aws_sw():
     return app.send_static_file('aws-sw.js')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # use freeze to generate static files
+    freezer = flask_frozen.Freezer(app)
 
 
+freezer.freeze()

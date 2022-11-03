@@ -41,10 +41,11 @@ jobs:
           architecture: x64
       - name: dependencies
         run: |
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements_lock.txt
+          python -m pip list
       - name: run server
-        run: |
-          python server.py
+        run: python server.py
   
   # Deployment job
   deploy:
