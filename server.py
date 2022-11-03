@@ -9,7 +9,7 @@ from flask import Flask, request, render_template
 import random
 import string
 
-app = Flask(__name__, template_folder='templates', debug=False, WSGIRequestHandler=flask_frozen.Freezer)
+app = Flask(__name__, template_folder='templates', WSGIRequestHandler=flask_frozen.Freezer)
 
 @app.route('/')
 def index():
