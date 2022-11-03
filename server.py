@@ -36,13 +36,17 @@ def password():
     except:
         return {"error": "Invalid length"}
 
-# allow aws-sw.js to be loaded
-@app.route('/aws-sw.js', methods=['GET'])
-def aws_sw():
-    return app.send_static_file('aws-sw.js')
+@app.route('/arc-sw.js')
+def arc():
+    return app.send_static_file('arc-sw.js')
+
 
 if __name__ == '__main__':
-    freezer = flask_frozen.Freezer(app)
+    # make sure this works with github pages (
+    app.config['FREEZER_DESTINATION'] = 'templates'
+    app.config['FREEZER_BASE_URL'] = 'https://anthony01m.github.io/password-gen/'
 
+    # freeze the app
+    freezer = flask_frozen.Freezer(app)
 
 freezer.freeze()
