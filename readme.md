@@ -1,7 +1,7 @@
 # Random password generator
-just another random password generator with hcaptcha and arc-sw.js 
+just another random password generator with hcaptcha
 
-stil new to hcaptcha and arc-sw.js; ah, if you're wondering I just did it for fun, so no that much CSS shit and the likes, didn't even bother remove the CSS of before cause I didn't want to, use it for free.
+stil new to hcaptcha; ah, if you're wondering I just did it for fun, so no that much CSS shit and the likes, didn't even bother remove the CSS of before cause I didn't want to, use it for free.
 
 ## Notice
 
