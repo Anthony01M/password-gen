@@ -33,7 +33,7 @@ jobs:
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
-          destination: ./build
+          destination: ./_site
       - name: Setup Python
         uses: actions/setup-python@v4.3.0
         with:
