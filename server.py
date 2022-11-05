@@ -15,9 +15,43 @@ app.config['DEBUG'] = False
 @app.route('/')
 def index():
     return render_template('index.html')
-    
-@app.route('/password', methods=['GET'])
+ 
+@app.route('/password', methods=['POST'])
 def password():
+    password = ''
+    special = request.form['symbol']
+    number = request.form['number']
+    capital = request.form['capital']
+    length = request.form['length']
+    if special == 'on':
+        special = True
+    else:
+        special = False
+    if number == 'on':
+        number = True
+    else:
+        number = False
+    if capital == 'on':
+        capital = True
+    else:
+        capital = False
+    if length == '':
+        length = 8
+    else:
+        length = int(length)
+    for i in range(length):
+        if special:
+            password += random.choice(string.punctuation)
+        if number:
+            password += random.choice(string.digits)
+        if capital:
+            password += random.choice(string.ascii_uppercase)
+        password += random.choice(string.ascii_lowercase)
+    password = ''.join(random.sample(password, len(password)))
+    return render_template('index.html', password=password)
+
+@app.route('/generate', methods=['POST'])
+def generate():
     try:
         length = int(request.args.get('length'))
         password = ""
@@ -35,12 +69,5 @@ def password():
     except:
         return {"error": "Invalid length"}
 
-
 if __name__ == '__main__':
-    app.config['FREEZER_DESTINATION'] = 'templates'
-    app.config['FREEZER_BASE_URL'] = 'https://anthony01m.github.io/password-gen/'
-
-    # freeze the app
-    freezer = flask_frozen.Freezer(app)
-
-freezer.freeze()
+    flask_frozen.Freezer(app).freeze()
