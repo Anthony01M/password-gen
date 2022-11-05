@@ -19,28 +19,16 @@ def index():
 @app.route('/password', methods=['POST'])
 def password():
     password = ''
-    special = request.form['symbol']
+    symbol = request.form['symbol']
     number = request.form['number']
     capital = request.form['capital']
     length = request.form['length']
-    if special == 'on':
-        special = True
-    else:
-        special = False
-    if number == 'on':
-        number = True
-    else:
-        number = False
-    if capital == 'on':
-        capital = True
-    else:
-        capital = False
     if length == '':
         length = 8
     else:
         length = int(length)
     for i in range(length):
-        if special:
+        if symbol:
             password += random.choice(string.punctuation)
         if number:
             password += random.choice(string.digits)
