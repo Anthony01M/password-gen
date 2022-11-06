@@ -1,13 +1,23 @@
 # Random password generator
-just another random password generator with hcaptcha
+Just another random password generator with hcaptcha by Anthony M.
 
-stil new to hcaptcha; ah, if you're wondering I just did it for fun, so no that much CSS shit and the likes, didn't even bother remove the CSS of before cause I didn't want to, use it for free.
+Didn't want to do this, but sure, half of the CSS was copy pasted from a good old website of mine (basically it's my website); ah, leavint the generator password aside, avoid copying my CSS and my style, that's more or less my own design, thanks.
+
+## What this does
+Generates a random password.
+
+## Time taken to make
+Around an hour, just for the design, etc.
+Around an hour, just for the javascript part.
+Around half an hour, just for the linking and debugging part.
+Around 6hours, just to deal with github-actions*.
+
+* may not fully be accurate, I'm taking them from wakatime but github-action is another matter.
+
+Conclusion: You won't learn if you're going to copy paste my stuff, it does take time, but you'll learn.
 
 ## Notice
-
-Still new to python, don't go copy pasting my stuff, thanks
-Still bad with CSS, don't go relying on me or asking stuff, thanks
-Still have to add a license, so please read it, thanks
+Due to github actions not working with the password generator as intended.. I moved completely to javascript, will do something else with python ig.
 
 ## License
-Under the MIT license, read it.
+Under the GPL license, please read it and follow it.
