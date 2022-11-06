@@ -1,0 +1,22 @@
+:root {
+    --background-color: rgb(250, 213, 6);
+    --button-color: rgb(255, 95, 95);
+    --button-text-color: rgb(255, 255, 255);
+    --button-hover-color: rgb(255, 95, 95);
+    --button-hover-text-color: rgb(255, 255, 255);
+    --button-active-color: rgb(255, 95, 95);
+    --button-active-text-color: rgb(255, 255, 255);
+    --button-focus-color: rgb(255, 95, 95);
+    --button-focus-text-color: rgb(255, 255, 255);
+    --button-disabled-color: rgb(255, 95, 95);
+    --button-disabled-text-color: rgb(255, 255, 255);
+    --link-color: rgb(146, 206, 255);
+}
+
+body {
+    background-color: var(--background-color);   
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+
