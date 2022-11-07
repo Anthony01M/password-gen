@@ -16,7 +16,7 @@ footer {
 	background-color: var(--footer-bg-color);
 }
 
-footer .row {
+footer #footer {
 	grid-template-columns: repeat(5, 3fr);
 	padding: 2.5%
 }

@@ -1,0 +1,49 @@
+:root {
+    --support-main-text-color: rgb(255, 0, 170);
+    --support-high-text-color: rgb(255, 134, 255);
+    --support-low-text-color: rgb(186, 67, 255);
+    --support-bold-text-color: rgb(77, 77, 77);
+    --support-italic-text-color: rgb(255, 0, 0);
+}
+
+main #support h2 {
+    text-align: center;
+    color: var(--support-high-text-color)
+}
+
+main #support {
+    color: var(--support-main-text-color);
+}
+
+main #support .service {
+    max-width: 80%;
+    display: flex center;
+}
+
+main #support .service p {
+    margin: 30px;
+}
+
+main #support h3 {
+    color: var(--support-low-text-color)
+}
+
+main #support .service h3 b {
+    color: var(--support-bold-text-color)
+}
+
+main #support .service h3 i {
+    color: var(--support-italic-text-color)
+}
+
+main #support .button-outline {
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid #fff;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+main #support .button-outline:hover {
+    border: 2px solid #ff726f;
+}
