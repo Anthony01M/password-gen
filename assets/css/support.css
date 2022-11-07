@@ -1,6 +1,6 @@
 :root {
-    --support-main-text-color: rgb(255, 0, 170);
-    --support-high-text-color: rgb(255, 134, 255);
+    --support-main-text-color: rgb(0, 0, 0);
+    --support-high-text-color: rgb(255, 255, 255);
     --support-low-text-color: rgb(186, 67, 255);
     --support-bold-text-color: rgb(77, 77, 77);
     --support-italic-text-color: rgb(255, 0, 0);
@@ -8,7 +8,10 @@
 
 main #support h2 {
     text-align: center;
-    color: var(--support-high-text-color)
+    color: var(--support-high-text-color);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 40px 0;
 }
 
 main #support {
@@ -16,12 +19,21 @@ main #support {
 }
 
 main #support .service {
-    max-width: 80%;
-    display: flex center;
+    max-width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+main #support .supervisor {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-content: space-between;
 }
 
 main #support .service p {
-    margin: 30px;
+    margin: 20px;
 }
 
 main #support h3 {
@@ -44,6 +56,7 @@ main #support .button-outline {
     color: #fff;
     display: inline-block;
 }
+
 main #support .button-outline:hover {
     border: 2px solid #ff726f;
 }
