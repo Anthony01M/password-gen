@@ -19,5 +19,8 @@ Conclusion: You won't learn if you're going to copy paste my stuff, it does take
 ## Notice
 Due to github actions not working with the password generator as intended.. I moved completely to javascript, will do something else with python ig.
 
+Good tip: Do not use HTML for such stuff, please use PHP or REACT or anything else, just not HTML for such stuff.
+I'm using HTML cause honestly, I don't want to have a conflict with github actions.
+
 ## License
 Under the GPL license, please read it and follow it.
