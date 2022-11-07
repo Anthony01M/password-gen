@@ -23,6 +23,5 @@ body {
     background-color: var(--main-color);
     height: 1px;
     width: 100%;
-    /* make it so it's in the center */
     margin: 40px auto;
 }

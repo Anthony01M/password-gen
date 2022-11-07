@@ -41,7 +41,6 @@ main #jobs {
 }
 
 main #jobs h1 {
-    /* should not interfere with the grid */
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     font-size: 2.5rem;
