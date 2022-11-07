@@ -1,9 +1,13 @@
 :root {
     --support-main-text-color: rgb(0, 0, 0);
-    --support-high-text-color: rgb(255, 255, 255);
+    --support-high-text-color: rgb(0, 0, 0);
     --support-low-text-color: rgb(186, 67, 255);
     --support-bold-text-color: rgb(77, 77, 77);
     --support-italic-text-color: rgb(255, 0, 0);
+    --support-button-text-color: rgb(0, 0, 0);
+    --support-button-background-color: rgb(0, 0, 0);
+    --support-button-hover-background-color: rgb(255, 255, 255);
+    --support-button-hover-text-color: rgb(255, 0, 0);
 }
 
 main #support h2 {
@@ -51,12 +55,13 @@ main #support .service h3 i {
 main #support .button-outline {
     border-radius: 20px;
     padding: 10px;
-    border: 2px solid #fff;
+    border: 2px solid var(--support-button-background-color);
     text-decoration: none;
-    color: #fff;
+    color: var(--support-button-text-color);
     display: inline-block;
 }
 
 main #support .button-outline:hover {
-    border: 2px solid #ff726f;
+    border: 2px solid var(--support-button-hover-background-color);
+    color: var(--support-button-hover-text-color)
 }

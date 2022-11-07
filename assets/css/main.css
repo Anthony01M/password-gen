@@ -1,8 +1,119 @@
 :root {
-    --main-text-color: black;
+    --main-color: black;
+    --main-jobs-button-color: rgb(255, 0, 0);
+    --main-jobs-button-text-color: rgb(255, 255, 255);
+    --main-jobs-button-hover-color: rgb(252, 252, 252);
+    --main-jobs-button-hover-text-color: rgb(0, 0, 0);
 }
 
 main .spacer {
     max-width: 75%;
     margin: 40px auto;
+}
+
+main .information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 40px auto;
+}
+
+main .information h1 {
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+main .information p {
+    margin: -25px auto;
+    font-size: 1.2rem;
+    color: var(--main-color);
+}
+
+main #jobs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-content: space-between;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+main #jobs h1 {
+    /* should not interfere with the grid */
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    font-size: 2.5rem;
+    color: var(--main-color);
+    text-align: center;
+}
+
+main #jobs .support {
+    max-width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+main #jobs .support h1 {
+    text-align: center;
+    color: var(--main-color);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 40px 0;
+}
+main #jobs .support p {
+    margin: 20px;
+}
+
+main #jobs .developer {
+    max-width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+main #jobs .developer h1 {
+    text-align: center;
+    color: var(--main-color);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 40px 0;
+}
+
+main #jobs .developer p {
+    margin: 20px;
+}
+
+main #jobs .developer a {
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid var(--main-jobs-button-color);
+    text-decoration: none;
+    color: var(--main-jobs-button-text-color);
+    display: inline-block;
+}
+
+main #jobs .developer a:hover {
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid var(--main-jobs-button-hover-color);
+    text-decoration: none;
+    color: var(--main-jobs-button-hover-text-color);
+}
+
+main #jobs .support a {
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid var(--main-jobs-button-color);
+    text-decoration: none;
+    color: var(--main-jobs-button-text-color);
+    display: inline-block;
+}
+
+main #jobs .support a:hover {
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid var(--main-jobs-button-hover-color);
+    text-decoration: none;
+    color: var(--main-jobs-button-hover-text-color);
 }
