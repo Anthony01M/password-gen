@@ -39,7 +39,7 @@ header h1 + p {
   font-size: 1.3rem;
 }
 
-header .description, h1 {
+header .description, header h1 {
   color: var(--header-description-color);
 }
 

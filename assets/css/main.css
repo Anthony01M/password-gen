@@ -1,15 +1,98 @@
 :root {
     --main-color: black;
+    --features-background-color: white;
+    --generators-background-color: rgb(255, 203, 203);
     --main-jobs-button-color: rgb(255, 0, 0);
     --main-jobs-button-text-color: rgb(255, 255, 255);
     --main-jobs-button-hover-color: rgb(252, 252, 252);
     --main-jobs-button-hover-text-color: rgb(255, 132, 132);
     --main-jobs-button-background-color: radial-gradient(black, transparent);
+    --main-generator-button-background-color: radial-gradient(white, transparent);
 }
 
 main .spacer {
     max-width: 75%;
     margin: 40px auto;
+}
+
+main #features {
+    text-align: center;
+    margin: 10% auto;
+}
+
+main #features .feature {
+    display: inline-block;
+}
+
+main #features .feature h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main #features .feature .feature-container {
+    display: grid;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+main #features .feature .feature-container .feature-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--features-background-color);
+}
+
+main #generators {
+    text-align: center;
+    margin: 10% auto;
+}
+
+main #generators .generator {
+    display: inline-block;
+}
+
+main #generators .generator h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main #generators .generator .generator-container {
+    display: grid;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+main #generators .generator .generator-container .generator-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--generators-background-color);
+}
+
+main #generators .generator .generator-container .generator-box a {
+    border-radius: 20px;
+    padding: 10px;
+    border: 0px solid var(--main--button-color);
+    background: var(--main-generator-button-background-color);
+    text-decoration: none;
+    color: var(--main-color);
+    display: inline-block;
 }
 
 main .information {

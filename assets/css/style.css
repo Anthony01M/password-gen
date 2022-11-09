@@ -1,4 +1,5 @@
 :root {
+    --text-color: rgb(0, 0, 0);
     --background-color: rgb(250, 213, 6);
     --button-color: rgb(255, 95, 95);
     --button-text-color: rgb(255, 255, 255);
@@ -15,6 +16,7 @@
 
 body {
     background-color: var(--background-color);   
+    color: var(--text-color);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0;
 }
