@@ -3,7 +3,8 @@
     --main-jobs-button-color: rgb(255, 0, 0);
     --main-jobs-button-text-color: rgb(255, 255, 255);
     --main-jobs-button-hover-color: rgb(252, 252, 252);
-    --main-jobs-button-hover-text-color: rgb(0, 0, 0);
+    --main-jobs-button-hover-text-color: rgb(255, 132, 132);
+    --main-jobs-button-background-color: radial-gradient(black, transparent);
 }
 
 main .spacer {
@@ -65,6 +66,24 @@ main #jobs .support p {
     margin: 20px;
 }
 
+main #jobs .support a {
+    border-radius: 20px;
+    padding: 10px;
+    border: 0px solid var(--main-jobs-button-color);
+    background: var(--main-jobs-button-background-color);
+    text-decoration: none;
+    color: var(--main-jobs-button-text-color);
+    display: inline-block;
+}
+
+main #jobs .support a:hover {
+    border-radius: 20px;
+    padding: 10px;
+    border: 0px solid var(--main-jobs-button-hover-color);
+    text-decoration: none;
+    color: var(--main-jobs-button-hover-text-color);
+}
+
 main #jobs .developer {
     max-width: 75%;
     margin: 0 auto;
@@ -86,33 +105,17 @@ main #jobs .developer p {
 main #jobs .developer a {
     border-radius: 20px;
     padding: 10px;
-    border: 2px solid var(--main-jobs-button-color);
+    border: 0px solid var(--main-jobs-button-color);
+    background: var(--main-jobs-button-background-color);
     text-decoration: none;
-    color: var(--main-jobs-button-text-color);
+    color: var(--main-jobs-button-color);
     display: inline-block;
 }
 
 main #jobs .developer a:hover {
     border-radius: 20px;
     padding: 10px;
-    border: 2px solid var(--main-jobs-button-hover-color);
-    text-decoration: none;
-    color: var(--main-jobs-button-hover-text-color);
-}
-
-main #jobs .support a {
-    border-radius: 20px;
-    padding: 10px;
-    border: 2px solid var(--main-jobs-button-color);
+    border: 0px solid var(--main-jobs-button-hover-color);
     text-decoration: none;
     color: var(--main-jobs-button-text-color);
-    display: inline-block;
-}
-
-main #jobs .support a:hover {
-    border-radius: 20px;
-    padding: 10px;
-    border: 2px solid var(--main-jobs-button-hover-color);
-    text-decoration: none;
-    color: var(--main-jobs-button-hover-text-color);
 }
