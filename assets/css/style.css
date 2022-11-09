@@ -27,3 +27,36 @@ body {
     width: 100%;
     margin: 40px auto;
 }
+
+.transparent {
+    background-color: transparent;
+}
+
+#contact-us {
+    text-align: center;
+}
+
+#terms-of-service {
+    text-align: center;
+    height: 50%;
+}
+
+#privacy-policy {
+    text-align: center;
+    height: 50%;
+}
+
+#cookies {
+    text-align: center;
+    height: 50%;
+}
+
+#license {
+    text-align: center;
+    height: 50%;
+}
+
+#legal {
+    text-align: center;
+    height: 50%;
+}

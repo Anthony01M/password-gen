@@ -202,3 +202,40 @@ main #jobs .developer a:hover {
     text-decoration: none;
     color: var(--main-jobs-button-text-color);
 }
+
+main #legal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 40px auto;
+}
+
+main #legal .legal {
+    display: inline-block;
+}
+
+main #legal .legal p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main #legal .legalization {
+    display: inline-block;
+}
+
+main #legal .legalization h1 {
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+main #legal .legalization a {
+    border-radius: 20px;
+    padding: 10px;
+    border: 0px solid var(--main-legalization-button-color);
+    background: var(--main-legalization-button-background-color);
+    text-decoration: none;
+    color: var(--main-legalization-button-text-color);
+    display: inline-block;
+}
