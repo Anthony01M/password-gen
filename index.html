@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Password Generator</title>
+</head>
+
+<body>
+    <div id="password">
+        <h1>Password Generator</h1>
+        <h2>by Anthony M.</h2>
+        <div id="password-container" class="hidden">
+            <textarea id="password" class="password" readonly></textarea>
+            <div>
+                <div class="button" id="generate">Generate</div>
+                <div class="button" id="copy">Copy</div>
+            </div>
+        </div>
+        <form class="password-container">
+            <label for="password-length">Password Length</label>
+            <input type="number" id="password-length" name="password-length" min="8" value="8" required>
+            <div class="checkbox-container">
+                <label for="uppercase">Uppercase</label>
+                <input type="checkbox" id="uppercase" name="uppercase">
+            </div>
+            <div class="checkbox-container">
+                <label for="lowercase">Lowercase</label>
+                <input type="checkbox" id="lowercase" name="lowercase">
+            </div>
+            <div class="checkbox-container">
+                <label for="numbers">Numbers</label>
+                <input type="checkbox" id="numbers" name="numbers">
+            </div>
+            <div class="checkbox-container">
+                <label for="symbols">Symbols</label>
+                <input type="checkbox" id="symbols" name="symbols">
+            </div>
+            <div id="error-message"></div>
+    </div>
+    <input type="submit" id="generator" value="Generate Password"></input>
+    <div id="lock-modal" class="hidden">
+        <div id="loading-circle"></div>
+    </div>
+    </form>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    <script type="text/javascript" src="script.js"></script>
+    </div>
+    </div>
+</body>
+
+</html>

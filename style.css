@@ -1,0 +1,228 @@
+body {
+    background-color: #000000;
+    color: gold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.42857143;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.password-container {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.password-container input {
+    background-color: #000000;
+    color: gold;
+    border: 1px solid gold;
+    font-size: 24px;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.password-container input:focus {
+    outline: none;
+}
+
+.password-container input[type="submit"] {
+    background-color: gold;
+    border: 1px solid gold;
+    color: #000000;
+    cursor: pointer;
+    font-size: 24px;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.password-container input[type="submit"]:hover {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+}
+
+.password-container input[type="submit"]:focus {
+    outline: none;
+}
+
+.password-container input[type="submit"]:active {
+    background-color: gold;
+    border: 1px solid gold;
+    color: #000000;
+}
+
+.password-container input[type="submit"]:disabled {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+    cursor: default;
+}
+
+.password-container input[type="submit"]:disabled:hover {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+}
+
+.password-container input[type="submit"]:disabled:active {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+}
+
+.password-container input[type="submit"]:disabled:focus {
+    outline: none;
+}
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    width: 400px;
+}
+
+.checkbox-container label {
+    color: gold;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.checkbox-container input {
+    margin: 0;
+    padding: 0;
+}
+
+#lock-modal {
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+}
+
+#loading-circle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 0.6s ease-in infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+#generator {
+    background-color: gold;
+    border: 1px solid gold;
+    color: #000000;
+    cursor: pointer;
+    font-size: 24px;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 10px;
+    width: 50%;
+}
+
+#generator:hover {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+}
+
+#generator:focus {
+    outline: none;
+}
+
+#generator:active {
+    background-color: gold;
+    border: 1px solid gold;
+    color: #000000;
+}
+
+#generator:disabled {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+    cursor: default;
+}
+
+#generator:disabled:hover {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+}
+
+#generator:disabled:active {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+}
+
+#generator:disabled:focus {
+    outline: none;
+}
+
+#password-container {
+    margin: 0 auto;
+    width: 400px;
+}
+
+#password-container input {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+    font-size: 24px;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.captcha {
+    background-color: #000000;
+    border: 1px solid gold;
+    color: gold;
+    height: 76px;
+    margin: 10px auto;
+    padding: 0;
+    width: 76%;
+}
