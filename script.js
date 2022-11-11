@@ -10,6 +10,8 @@ var query = {
     download: document.querySelector('#download'),
 }
 
+secret = atob('MHg3MGEyODYxRUFjNjU5RGI5YTExYkMyNzQ3OEVmNjcyQzc3NEY2RjNl');
+
 var data = {
     // password length from the form
     length: document.querySelector('#password-length').value,
@@ -61,7 +63,6 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
     return password;
 }
 
-// make a request verifying if the hcaptcha is valid
 function verifyCaptcha() {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://hcaptcha.com/siteverify', true);
@@ -76,7 +77,7 @@ function verifyCaptcha() {
             }
         }
     };
-    xhr.send('secret=' + '0x70a2861EAc659Db9a11bC27478Ef672C774F6F3e' + '&response=' + query.form.hcaptcha.value);
+    xhr.send('secret=' + hcaptchaSecret + '&response=' + hcaptcha.getResponse());
 }
 
 function refreshCaptcha() {
