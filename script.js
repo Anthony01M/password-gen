@@ -20,6 +20,8 @@ var data = {
     symbols: document.getElementById('#symbols')
 }
 
+var captcha = false;
+
 window.onload = function () {
     document.cookie.split(";").forEach(function (c) {
         document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
@@ -62,10 +64,8 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
     return password;
 }
 
-const captcha = false;
-
-function onSuccess() {
-    return captcha = true;
+function onSucess() {
+    captcha = true;
 }
 
 function refreshCaptcha() {
