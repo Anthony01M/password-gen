@@ -62,10 +62,10 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
 }
 
 function onSucess() {
-    if (hcaptcha.getResponse() != '') {
+    if (hcaptcha.getResponse() !== '') {
         return true;
     }
-
+    
     return false;
 }
 
