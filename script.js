@@ -63,6 +63,7 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
 
 function onSucess() {
     hcaptcha.execute();
+    console.log(hcaptcha.getResponse());
     if (hcaptcha.getResponse() != "") {
         return true;
     } else {
