@@ -11,10 +11,10 @@ var query = {
 
 var data = {
     length: document.querySelector('#password-length').value,
-    lowercase: document.querySelector('#lowercase').checked,
-    uppercase: document.querySelector('#uppercase').checked,
-    numbers: document.querySelector('#numbers').checked,
-    symbols: document.querySelector('#symbols').checked
+    lowercase: document.getElementById('#lowercase'),
+    uppercase: document.getElementById('#uppercase'),
+    numbers: document.getElementById('#numbers'),
+    symbols: document.getElementById('#symbols')
 }
 
 var onSucess = function() {
@@ -123,4 +123,10 @@ query.form.addEventListener('submit', function (e) {
     } else {
         query.error.innerHTML = 'Please complete the captcha';
     }
+});
+
+document.querySelectorAll('input').forEach(function (input) {
+    input.addEventListener('change', function () {
+        data[input.id] = input.checked;
+    });
 });
