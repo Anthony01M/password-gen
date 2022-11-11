@@ -10,6 +10,7 @@ var query = {
 }
 
 var data = {
+    // password length from the form
     length: document.querySelector('#password-length').value,
     lowercase: document.getElementById('#lowercase'),
     uppercase: document.getElementById('#uppercase'),
@@ -17,12 +18,13 @@ var data = {
     symbols: document.getElementById('#symbols')
 }
 
-var onSucess = function() {
+
+var onSucess = function () {
     return true;
 }
 
-window.onload = function() {
-    document.cookie.split(";").forEach(function(c) {
+window.onload = function () {
+    document.cookie.split(";").forEach(function (c) {
         document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
     });
 }
@@ -65,7 +67,7 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
         characters += '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
     }
     for (var i = 0; i < length; i++) {
-        password += characters.charAt(Math.floor(Math.random() * characters.length ));
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return password;
 }
@@ -110,14 +112,14 @@ query.form.addEventListener('submit', function (e) {
         query.lockModal.classList.remove('hidden');
         setTimeout(function () {
             if (data.lowercase || data.uppercase) {
-            query.form.classList.add('hidden');
-            query.generator.classList.add('hidden');
-            query.lockModal.classList.add('hidden');
-            query.passwordContainer.classList.remove('hidden');
-            getPassword();
+                query.form.classList.add('hidden');
+                query.generator.classList.add('hidden');
+                query.lockModal.classList.add('hidden');
+                query.passwordContainer.classList.remove('hidden');
+                getPassword();
             } else {
-            query.lockModal.classList.add('hidden');
-            query.error.innerHTML = 'Please select at least one of the following options: lowercase, uppercase';
+                query.lockModal.classList.add('hidden');
+                query.error.innerHTML = 'Please select at least one of the following options: lowercase, uppercase';
             }
         }, 2000).toFixed;
     } else {
@@ -128,5 +130,6 @@ query.form.addEventListener('submit', function (e) {
 document.querySelectorAll('input').forEach(function (input) {
     input.addEventListener('change', function () {
         data[input.id] = input.checked;
+        data.length = document.querySelector('#password-length').value;
     });
 });
