@@ -6,7 +6,8 @@ var query = {
     lockModal: document.querySelector('#lock-modal'),
     generator: document.querySelector('#generator'),
     copy: document.querySelector('#copy'),
-    generate: document.querySelector('#generate')
+    generate: document.querySelector('#generate'),
+    download: document.querySelector('#download'),
 }
 
 var data = {
@@ -22,6 +23,14 @@ window.onload = function () {
     document.cookie.split(";").forEach(function (c) {
         document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
     });
+}
+
+function mouseoverPass() {
+    query.passwordInput.type = "text";
+}
+
+function mouseoutPass() {
+    query.passwordInput.type = "password";
 }
 
 function getPassword() {
@@ -70,7 +79,7 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
 function onSucess() {
     if (hcaptcha.getResponse() != '') {
         return true;
-    } 
+    }
 
     return false;
 }
@@ -90,6 +99,7 @@ query.generate.addEventListener('click', function () {
 
 query.copy.addEventListener('click', function () {
     var text = query.passwordInput.value;
+
     var success = 'The password has been copied to clipboard';
     var fail = 'Failed to copy the password to clipboard';
     if (navigator.clipboard.writeText(text)) {
@@ -107,6 +117,18 @@ query.copy.addEventListener('click', function () {
             button: 'Close',
         });
     }
+});
+
+query.download.addEventListener('click', function () {
+    var text = query.passwordInput.value;
+    var filename = 'password.txt';
+    var blob = new Blob([text], {
+        type: 'text/plain'
+    });
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
 });
 
 query.form.addEventListener('submit', function (e) {

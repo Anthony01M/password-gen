@@ -234,7 +234,7 @@ h2 {
 
 #password-container .button {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: 0 auto;
     width: 400px;
     cursor: pointer;

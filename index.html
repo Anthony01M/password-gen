@@ -22,10 +22,11 @@
         <h2>by Anthony M.</h2>
         <div id="password-container" class="hidden">
             <label for="password">Password:</label>
-            <input type="text" id="password-input" value="Your password will appear here" readonly>
+            <input type="password" id="password-input" value="Your password will appear here" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" readonly>
             <div class="button">
                 <a id="generate">Generate</a>
                 <a id="copy">Copy</a>
+                <a id="download">Download</a>
             </div>
         </div>
         <form class="password-container">
