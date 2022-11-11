@@ -187,7 +187,7 @@ h2 {
     color: gold;
 }
 
-#generator:disabled:active {
+.generator:disabled:active {
     background-color: #000000;
     border: 1px solid gold;
     color: gold;
@@ -200,6 +200,7 @@ h2 {
 #password-container {
     margin: 0 auto;
     width: 400px;
+    color: gold;
 }
 
 #password-container input {
@@ -217,7 +218,7 @@ h2 {
     display: none;
 }
 
-.captcha {
+#captcha {
     background-color: #000000;
     border: 1px solid gold;
     color: gold;
@@ -225,4 +226,20 @@ h2 {
     margin: 10px auto;
     padding: 0;
     width: 76%;
+}
+
+#captcha:focus {
+    outline: none;
+}
+
+#password-container .button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    width: 400px;
+    cursor: pointer;
+}
+
+#password-container .button a:hover {
+    color: red;
 }

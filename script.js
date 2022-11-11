@@ -1,10 +1,13 @@
-const form = document.querySelector('form');
-
-var error = document.querySelector('#error-message');
-
-var passwordContainer = document.querySelector('#password-container');
-
-var lockModal = document.querySelector('#lock-modal');
+var query = {
+    form: document.querySelector('form'),
+    error: document.querySelector('#error-message'),
+    passwordContainer: document.querySelector('#password-container'),
+    passwordInput: document.querySelector('#password-input'),
+    lockModal: document.querySelector('#lock-modal'),
+    generator: document.querySelector('#generator'),
+    copy: document.querySelector('#copy'),
+    generate: document.querySelector('#generate')
+}
 
 var data = {
     length: document.querySelector('#password-length').value,
@@ -14,29 +17,21 @@ var data = {
     symbols: document.querySelector('#symbols').checked
 }
 
-window.onload = function() {
-    var hcaptcha = document.createElement('div');
-    hcaptcha.className = 'captcha';
-    hcaptcha.setAttribute('data-sitekey', '55c75673-8d89-40ab-af6e-e36e14aa4e31');
-    hcaptcha.setAttribute('theme', 'dark');
+var onSucess = function() {
+    return true;
+}
 
-    error.appendChild(hcaptcha);
+window.onload = function() {
+    document.cookie.split(";").forEach(function(c) {
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
 }
 
 function getPassword() {
 
     var password = generatePassword(data.length, data.lowercase, data.uppercase, data.numbers, data.symbols);
 
-    passwordContainer.remove('hidden');
-    passwordContainer.textContent = password;
-
-}
-
-function generatePassword(length, lowercase, uppercase, numbers, symbols) {
-    var password = '';
-    var characters = '';
     if (length > 128) {
-        lockModal.classList.remove('hidden');
         var ad = document.createElement('div');
         ad.className = 'ad';
         ad.setAttribute('data-ad-client', 'ca-pub-3940256099942544');
@@ -47,7 +42,16 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
         ad.setAttribute('style', 'display:block');
         ad.setAttribute('data-adsbygoogle-status', 'done');
         ad.setAttribute('data-adsbygoogle-pub-adsbygoogle-push', 'true');
+        query.passwordContainer.appendChild(ad);
+        (adsbygoogle = window.adsbygoogle || []).push({});
     }
+
+    query.passwordInput.value = password;
+}
+
+function generatePassword(length, lowercase, uppercase, numbers, symbols) {
+    var password = '';
+    var characters = '';
     if (lowercase) {
         characters += 'abcdefghijklmnopqrstuvwxyz';
     }
@@ -61,7 +65,7 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
         characters += '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
     }
     for (var i = 0; i < length; i++) {
-        password += characters.charAt(Math.floor(Math.random() * characters.length));
+        password += characters.charAt(Math.floor(Math.random() * characters.length ));
     }
     return password;
 }
@@ -70,17 +74,17 @@ function refreshCaptcha() {
     hcaptcha.reset();
 }
 
-document.querySelector('#generate').addEventListener('click', function () {
-    passwordContainer.classList.add('hidden');
-    form.classList.remove('hidden');
-    lockModal.classList.add('hidden');
-    passwordContainer.innerHTML = '';
-    error.innerHTML = '';
+query.generate.addEventListener('click', function () {
+    query.generator.classList.remove('hidden');
+    query.passwordContainer.classList.add('hidden');
+    query.form.classList.remove('hidden');
+    query.lockModal.classList.add('hidden');
+    query.error.innerHTML = '';
     refreshCaptcha();
 });
 
-document.querySelector('#copy').addEventListener('click', function () {
-    var text = passwordContainer.innerHTML;
+query.copy.addEventListener('click', function () {
+    var text = query.passwordInput.value;
     var success = 'The password has been copied to clipboard';
     var fail = 'Failed to copy the password to clipboard';
     if (navigator.clipboard.writeText(text)) {
@@ -100,19 +104,23 @@ document.querySelector('#copy').addEventListener('click', function () {
     }
 });
 
-form.addEventListener('submit', function (e) {
+query.form.addEventListener('submit', function (e) {
     e.preventDefault();
-
-    if (hcaptcha.getResponse() != '') {
-        lockModal.classList.remove('hidden');
+    if (onSucess) {
+        query.lockModal.classList.remove('hidden');
         setTimeout(function () {
-            form.classList.add('hidden');
-            lockModal.classList.add('hidden');
-            document.getElementById('generator').add('hidden');
-            passwordContainer.classList.remove('hidden');
+            if (data.lowercase || data.uppercase) {
+            query.form.classList.add('hidden');
+            query.generator.classList.add('hidden');
+            query.lockModal.classList.add('hidden');
+            query.passwordContainer.classList.remove('hidden');
             getPassword();
-        }, 3000);
+            } else {
+            query.lockModal.classList.add('hidden');
+            query.error.innerHTML = 'Please select at least one of the following options: lowercase, uppercase';
+            }
+        }, 2000).toFixed;
     } else {
-        error.innerHTML = 'Please complete the captcha';
+        query.error.innerHTML = 'Please complete the captcha';
     }
 });
