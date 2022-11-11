@@ -61,14 +61,22 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
     return password;
 }
 
-function onSucess() {
-    hcaptcha.execute();
-    console.log(hcaptcha.getResponse());
-    if (hcaptcha.getResponse() != "") {
-        return true;
-    } else {
-        return false;
-    }
+// make a request verifying if the hcaptcha is valid
+function verifyCaptcha() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://hcaptcha.com/siteverify', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
+    xhr.send('secret=' + '0x70a2861EAc659Db9a11bC27478Ef672C774F6F3e' + '&response=' + query.form.hcaptcha.value);
 }
 
 function refreshCaptcha() {
@@ -120,7 +128,7 @@ query.download.addEventListener('click', function () {
 
 query.form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (onSucess) {
+    if (verifyCaptcha()) {
         query.lockModal.classList.remove('hidden');
         setTimeout(function () {
             if (data.lowercase || data.uppercase) {
