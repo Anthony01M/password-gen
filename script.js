@@ -65,7 +65,7 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
     return password;
 }
 
-function onSucess() {
+function onSuccess() {
     captcha = true;
 }
 
