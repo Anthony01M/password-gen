@@ -10,7 +10,7 @@ var query = {
     download: document.querySelector('#download'),
 }
 
-secret = atob('MHg3MGEyODYxRUFjNjU5RGI5YTExYkMyNzQ3OEVmNjcyQzc3NEY2RjNl');
+hcaptchaSecret = atob('MHg3MGEyODYxRUFjNjU5RGI5YTExYkMyNzQ3OEVmNjcyQzc3NEY2RjNl');
 
 var data = {
     // password length from the form
