@@ -10,7 +10,6 @@ var query = {
     download: document.querySelector('#download'),
 }
 
-hcaptchaSecret = atob('MHg3MGEyODYxRUFjNjU5RGI5YTExYkMyNzQ3OEVmNjcyQzc3NEY2RjNl');
 
 var data = {
     // password length from the form
@@ -63,21 +62,10 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
     return password;
 }
 
-function verifyCaptcha() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://hcaptcha.com/siteverify', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            if (response.success) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    };
-    xhr.send('secret=' + hcaptchaSecret + '&response=' + hcaptcha.getResponse());
+const captcha = false;
+
+function onSuccess() {
+    return captcha = true;
 }
 
 function refreshCaptcha() {
@@ -129,7 +117,7 @@ query.download.addEventListener('click', function () {
 
 query.form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (verifyCaptcha()) {
+    if (captcha) {
         query.lockModal.classList.remove('hidden');
         setTimeout(function () {
             if (data.lowercase || data.uppercase) {
