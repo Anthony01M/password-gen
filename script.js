@@ -8,6 +8,7 @@ var query = {
     copy: document.querySelector('#copy'),
     generate: document.querySelector('#generate'),
     download: document.querySelector('#download'),
+    hcaptcha: document.getElementById('captcha'),
 }
 
 
@@ -68,8 +69,14 @@ function onSucess() {
     captcha = true;
 }
 
+function onExpire() {
+    query.error.innerHTML = "Captcha Expired";
+    captcha = false;
+}
+
+
 function refreshCaptcha() {
-    hcaptcha.reset();
+    query.hcaptcha.src = query.hcaptcha.src.substring(0, query.hcaptcha.src.lastIndexOf("?")) + "?rand=" + Math.random() * 1000;
 }
 
 query.generate.addEventListener('click', function () {
