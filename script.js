@@ -18,11 +18,6 @@ var data = {
     symbols: document.getElementById('#symbols')
 }
 
-
-var onSucess = function () {
-    return true;
-}
-
 window.onload = function () {
     document.cookie.split(";").forEach(function (c) {
         document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
@@ -70,6 +65,14 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
         password += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return password;
+}
+
+function onSucess() {
+    if (hcaptcha.getResponse() != '') {
+        return true;
+    } 
+
+    return false;
 }
 
 function refreshCaptcha() {
