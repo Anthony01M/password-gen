@@ -37,21 +37,6 @@ function getPassword() {
 
     var password = generatePassword(data.length, data.lowercase, data.uppercase, data.numbers, data.symbols);
 
-    if (length > 128) {
-        var ad = document.createElement('div');
-        ad.className = 'ad';
-        ad.setAttribute('data-ad-client', 'ca-pub-3940256099942544');
-        ad.setAttribute('data-ad-slot', '3098455663');
-        ad.setAttribute('data-ad-format', 'auto');
-        ad.setAttribute('data-full-width-responsive', 'true');
-        ad.setAttribute('data-adtest', 'on');
-        ad.setAttribute('style', 'display:block');
-        ad.setAttribute('data-adsbygoogle-status', 'done');
-        ad.setAttribute('data-adsbygoogle-pub-adsbygoogle-push', 'true');
-        query.passwordContainer.appendChild(ad);
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    }
-
     query.passwordInput.value = password;
 }
 

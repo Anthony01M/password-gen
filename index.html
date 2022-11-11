@@ -22,7 +22,8 @@
         <h2>by Anthony M.</h2>
         <div id="password-container" class="hidden">
             <label for="password">Password:</label>
-            <input type="password" id="password-input" value="Your password will appear here" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" readonly>
+            <input type="password" id="password-input" value="Your password will appear here"
+                onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" readonly>
             <div class="button">
                 <a id="generate">Generate</a>
                 <a id="copy">Copy</a>
@@ -57,9 +58,21 @@
         <div id="loading-circle"></div>
     </div>
     </form>
+    </div>
+    </div>
     <script type="text/javascript" src="script.js"></script>
-    </div>
-    </div>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W44SQNYWK3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-W44SQNYWK3');
+    </script>
 </body>
 
 </html>
