@@ -62,11 +62,12 @@ function generatePassword(length, lowercase, uppercase, numbers, symbols) {
 }
 
 function onSucess() {
-    if (hcaptcha.getResponse() !== '') {
+    hcaptcha.execute();
+    if (hcaptcha.getResponse() != "") {
         return true;
+    } else {
+        return false;
     }
-    
-    return false;
 }
 
 function refreshCaptcha() {
